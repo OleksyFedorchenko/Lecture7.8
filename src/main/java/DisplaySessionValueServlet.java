@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 @WebServlet("/DisplaySessionValueServlet")
 public class DisplaySessionValueServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -15,6 +16,7 @@ public class DisplaySessionValueServlet extends HttpServlet {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,9 +24,9 @@ public class DisplaySessionValueServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //get parameters from session object.
-        HttpSession session=request.getSession(false);
-        String userName =(String)session.getAttribute("userName");
-        String password =(String)session.getAttribute("password");
+        HttpSession session = request.getSession(false);
+        String userName = (String) session.getAttribute("userName");
+        String password = (String) session.getAttribute("password");
 
         out.println("Username: " + userName + "<br/><br/>");
         out.println("Password: " + password);
