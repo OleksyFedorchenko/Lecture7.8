@@ -40,8 +40,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         //check for null and empty values.
-        if (userName == null || userName.equals("") ||
-                password == null || password.equals("")) {
+        if (userName.equals("") || password.equals("")) {
             out.print("Please enter both username " +
                     "and password. <br/><br/>");
             RequestDispatcher requestDispatcher =
