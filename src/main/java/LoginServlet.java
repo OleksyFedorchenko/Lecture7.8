@@ -22,11 +22,11 @@ public class LoginServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        Model model =Model.getInstance();
+        Model model = Model.getInstance();
         model.list().clear();
-        model.add(new User("alex","Alexei","123"));
-        model.add(new User("oleg","Oleg","1234"));
-        model.add(new User("sasha","Alexander","1234"));
+        model.add(new User("alex", "Alexei", "123"));
+        model.add(new User("oleg", "Oleg", "1234"));
+        model.add(new User("sasha", "Alexander", "1234"));
 
         PrintWriter out = response.getWriter();
 
@@ -34,12 +34,12 @@ public class LoginServlet extends HttpServlet {
         String userName = request.getParameter("userName").trim();
         String password = request.getParameter("password").trim();
 
-        String loginTemp="";
-        String passwordTemp="";
-        for (User u:model.list()){
-            if (userName.equals(u.getLogin())&&password.equals(u.getPassword())){
-                loginTemp=u.getLogin();
-                passwordTemp=u.getPassword();
+        String loginTemp = "";
+        String passwordTemp = "";
+        for (User u : model.list()) {
+            if (userName.equals(u.getLogin()) && password.equals(u.getPassword())) {
+                loginTemp = u.getLogin();
+                passwordTemp = u.getPassword();
             }
         }
 
@@ -52,9 +52,7 @@ public class LoginServlet extends HttpServlet {
                     request.getRequestDispatcher("/index.jsp");
             requestDispatcher.include(request, response);
         }//Check for valid username and password.
-        else
-
-            if (userName.equals(loginTemp) && password.equals(passwordTemp)) {
+        else if (userName.equals(loginTemp) && password.equals(passwordTemp)) {
             HttpSession session = request.getSession();
             session.setAttribute("userName", userName);
             session.setAttribute("password", password);

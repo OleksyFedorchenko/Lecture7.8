@@ -25,7 +25,7 @@ public class DisplaySessionValueServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         //get parameters from session object.
         HttpSession session = request.getSession(false);
-        if(session.getAttribute("userName")==(null)){
+        if (session.getAttribute("userName") == (null)) {
             RequestDispatcher requestDispatcher =
                     request.getRequestDispatcher("/index.jsp");
             requestDispatcher.include(request, response);
@@ -41,12 +41,12 @@ public class DisplaySessionValueServlet extends HttpServlet {
                     "}</style>");
             out.print("<table>\n" +
                     "<thead><th>Login</th><th>Name</th></thead>");
-            for(User u : Model.getInstance().list())
-            {
-                out.print("<tr><td>"+u.getLogin()+"</td><td>"+u.getName()+"</td></tr>");
+            for (User u : Model.getInstance().list()) {
+                out.print("<tr><td>" + u.getLogin() + "</td><td>" + u.getName() + "</td></tr>");
             }
             out.print("</table>");
-    }out.close();
+        }
+        out.close();
     }
 
 }
