@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-
         Model model =Model.getInstance();
         model.list().clear();
         model.add(new User("alex","Alexei","123"));
@@ -35,6 +34,15 @@ public class LoginServlet extends HttpServlet {
         String userName = request.getParameter("userName").trim();
         String password = request.getParameter("password").trim();
 
+        String loginTemp="";
+        String passwordTemp="";
+        for (User u:model.list()){
+            if (userName.equals(u.getLogin())&&password.equals(u.getPassword())){
+                loginTemp=u.getLogin();
+                passwordTemp=u.getPassword();
+            }
+        }
+
         //check for null and empty values.
         if (userName == null || userName.equals("") ||
                 password == null || password.equals("")) {
@@ -46,16 +54,17 @@ public class LoginServlet extends HttpServlet {
         }//Check for valid username and password.
         else
 
-            if (userName.equals("alex") && password.equals("123")) {
+            if (userName.equals(loginTemp) && password.equals(passwordTemp)) {
             HttpSession session = request.getSession();
             session.setAttribute("userName", userName);
             session.setAttribute("password", password);
-            out.println(model.list());
             out.println("Logged in successfully.<br/>");
             out.println("Click on the below link to see " +
-                    "the values of Username and Password.<br/>");
+                    "the all users.<br/>");
             out.println("<a href='DisplaySessionValueServlet'>" +
                     "Click here</a>");
+            out.println("<a href='LogoutServlet'>" +
+                    "LOGOUT</a>");
             out.close();
         } else {
             out.print("Wrong username or password. <br/><br/>");
