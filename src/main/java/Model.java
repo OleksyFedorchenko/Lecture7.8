@@ -11,11 +11,11 @@ public class Model {
 
     private Model() {
         model = new ArrayList<>();
+        model.add(new User("alex", "Alexei", "123"));
+        model.add(new User("oleg", "Oleg", "1234"));
+        model.add(new User("sasha", "Alexander", "1234"));
     }
 
-    public void add(User user) {
-        model.add(user);
-    }
 
     public List<User> list() {
         return model;

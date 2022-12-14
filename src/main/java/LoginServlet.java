@@ -23,10 +23,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         Model model = Model.getInstance();
-        model.list().clear();
-        model.add(new User("alex", "Alexei", "123"));
-        model.add(new User("oleg", "Oleg", "1234"));
-        model.add(new User("sasha", "Alexander", "1234"));
 
         PrintWriter out = response.getWriter();
 
