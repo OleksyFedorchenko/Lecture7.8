@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    private static Model instance = new Model();
-    private List<User> model;
+    private static final Model instance = new Model();
+    private final List<User> model;
 
     public static Model getInstance() {
         return instance;
