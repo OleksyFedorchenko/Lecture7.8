@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
 
         Model model =Model.getInstance();
+        model.list().clear();
         model.add(new User("alex","Alexei","123"));
         model.add(new User("oleg","Oleg","1234"));
         model.add(new User("sasha","Alexander","1234"));
@@ -44,11 +45,12 @@ public class LoginServlet extends HttpServlet {
             requestDispatcher.include(request, response);
         }//Check for valid username and password.
         else
-            for(User u:model.list()){
-            if (userName.equals(u.getName()) && password.equals(u.getPassword())) {
+
+            if (userName.equals("alex") && password.equals("123")) {
             HttpSession session = request.getSession();
             session.setAttribute("userName", userName);
             session.setAttribute("password", password);
+            out.println(model.list());
             out.println("Logged in successfully.<br/>");
             out.println("Click on the below link to see " +
                     "the values of Username and Password.<br/>");
@@ -60,6 +62,6 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher requestDispatcher =
                     request.getRequestDispatcher("/index.jsp");
             requestDispatcher.include(request, response);
-        }}
+        }
     }
 }
