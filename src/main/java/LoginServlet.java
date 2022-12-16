@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serial;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     //no-argument constructor
@@ -32,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 
         String loginTemp = "";
         String passwordTemp = "";
-        for (User u : model.list()) {
+        for (User u : model.getUserList()) {
             if (userName.equals(u.getLogin()) && password.equals(u.getPassword())) {
                 loginTemp = u.getLogin();
                 passwordTemp = u.getPassword();
@@ -54,7 +56,7 @@ public class LoginServlet extends HttpServlet {
             out.println("Logged in successfully.<br/>");
             out.println("Click on the below link to see " +
                     "the all users.<br/>");
-            out.println("<a href='DisplaySessionValueServlet'>" +
+            out.println("<a href='ShowAllUsersServlet'>" +
                     "Click here</a>");
             out.println("<a href='LogoutServlet'>" +
                     "LOGOUT</a>");

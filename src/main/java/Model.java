@@ -3,21 +3,21 @@ import java.util.List;
 
 public class Model {
     private static final Model instance = new Model();
-    private final List<User> model;
+    private final List<User> userList;
 
     public static Model getInstance() {
         return instance;
     }
 
     private Model() {
-        model = new ArrayList<>();
-        model.add(new User("alex", "Alexei", "123"));
-        model.add(new User("oleg", "Oleg", "1234"));
-        model.add(new User("sasha", "Alexander", "1234"));
+        userList = new ArrayList<>();
+        userList.add(new User("alex", "Alexei", "123"));
+        userList.add(new User("oleg", "Oleg", "1234"));
+        userList.add(new User("sasha", "Alexander", "1234"));
     }
 
 
-    public List<User> list() {
-        return model;
+    public List<User> getUserList() {
+        return userList;
     }
 }
