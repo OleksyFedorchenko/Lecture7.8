@@ -24,7 +24,6 @@ public class ShowAllUsersServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
         //get parameters from session object.
         HttpSession session = request.getSession(false);
         if (session.getAttribute("userName") == (null)) {
@@ -32,23 +31,8 @@ public class ShowAllUsersServlet extends HttpServlet {
                     request.getRequestDispatcher("/index.jsp");
             requestDispatcher.include(request, response);
         } else {
-            out.print("""
-                    <style>table,th,td{
-                      border: 1px solid grey;
-                      text-align:center;
-                    }\s
-
-                    th,td{
-                       padding:10px;
-                    }</style>""");
-            out.print("<table>\n" +
-                    "<thead><th>Login</th><th>Name</th></thead>");
-            for (User u : Model.getInstance().getUserList()) {
-                out.print("<tr><td>" + u.getLogin() + "</td><td>" + u.getName() + "</td></tr>");
-            }
-            out.print("</table>");
+            request.setAttribute("userList", Model.getInstance().getUserList());
+            request.getRequestDispatcher("/WEB-INF/allUsers.jsp").forward(request, response);
         }
-        out.close();
     }
-
 }
