@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
             out.println("Click on the below link to see " +
                     "the all users.<br/>");
             out.println("<a href='ShowAllUsersServlet'>" +
-                    "Click here</a>");
+                    "Click here</a>&nbsp");
             out.println("<a href='LogoutServlet'>" +
                     "LOGOUT</a>");
             out.close();
