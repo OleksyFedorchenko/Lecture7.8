@@ -7,9 +7,15 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 </head>
 <body>
 <form action="LoginServlet" method="post">
-    Username:<input type="text" name="userName"/>
+    Username:
+    <label>
+    <input type="text" name="userName"/>
+    </label>
     <br/><br/>
-    Password:<input type="password" name="password"/>
+    Password:
+    <label>
+    <input type="password" name="password"/>
+    </label>
     <br/><br/>
     <input type="submit" value="login"/>
 </form>

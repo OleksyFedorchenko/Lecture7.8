@@ -16,7 +16,6 @@ public class Model {
         userList.add(new User("sasha", "Alexander", "1234"));
     }
 
-
     public List<User> getUserList() {
         return userList;
     }
